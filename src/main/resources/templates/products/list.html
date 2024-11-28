@@ -5,47 +5,60 @@
     <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/products">Produits</a></li>
-                <li><a href="/products/new">Nouveau Produit</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/products">Produits</a></li>
+            <li><a href="/products/new">Nouveau Produit</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
-        <h1>Liste des Produits</h1>
-        <a href="/products/new" class="btn btn-primary">Ajouter un Produit</a>
-        
-        <table class="product-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nom</th>
-                    <th>Prix</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="product : ${products}">
-                    <td th:text="${product.id}">ID</td>
-                    <td th:text="${product.name}">Nom</td>
-                    <td th:text="${product.price} + ' €'">Prix</td>
-                    <td th:text="${product.description}">Description</td>
-                    <td>
-                        <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-edit">Modifier</a>
-                        <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn btn-delete">Supprimer</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
+<main>
+    <h1>Liste des Produits</h1>
+    <a href="/products/new" class="btn btn-primary">Ajouter un Produit</a>
 
-    <footer>
-        <p>&copy; 2024 Gestion des Produits</p>
-    </footer>
+    <table class="product-table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}">ID</td>
+            <td th:text="${product.name}">Nom</td>
+            <td th:text="${product.price} + ' €'">Prix</td>
+            <td th:text="${product.description}">Description</td>
+            <td>
+                <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-edit">Modifier</a>
+                <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn btn-delete">Supprimer</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer>
+    <p>&copy; 2024 Gestion des Produits</p>
+
+    <!-- Mise en commentaire des scripts inutiles -->
+    <!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    <script>
+        // Boucle JavaScript inutile
+        for (let i = 0; i < 100000; i++) {
+            console.log('Calcul inutile #' + i);
+        }
+    </script>
+    -->
+</footer>
 </body>
 </html>

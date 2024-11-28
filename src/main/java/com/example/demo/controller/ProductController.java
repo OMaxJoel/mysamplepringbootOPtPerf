@@ -1,9 +1,11 @@
 package com.example.demo.controller;
 
+
 import com.example.demo.model.Product;
 import com.example.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
+@EnableCaching
 public class ProductController {
 
     @Autowired
@@ -50,7 +53,7 @@ public class ProductController {
     @PostMapping("/products/new")
     public String createProduct(@ModelAttribute Product product) {
         productService.createProduct(product);
-        sendEmailConfirmation("example@example.com");  // Envoi asynchrone d'un email de confirmation
+       // sendEmailConfirmation("example@example.com");  // Envoi asynchrone d'un email de confirmation
         return "redirect:/";
     }
 

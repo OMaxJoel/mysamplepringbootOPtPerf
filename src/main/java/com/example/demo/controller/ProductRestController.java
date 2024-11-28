@@ -29,16 +29,16 @@ public class ProductRestController {
     }
 
     // Récupère tous les produits sans pagination
+
+   @Cacheable(value = "productsCache", key = "'allProducts'")
     @GetMapping
-    @Cacheable(value = "productsCache", key = "'allProducts'")
-    public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> products = productService.getAllProducts();
-        return ResponseEntity.ok(products);
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
     }
 
     // Récupère un produit par ID - avec cache
     @GetMapping("/{id}")
-    @Cacheable(value = "productCache", key = "#id")
+   @Cacheable(value = "productCache", key = "#id")
     public ResponseEntity<Product> getProductById(@PathVariable Long id) {
         return productService.getProductById(id)
             .map(ResponseEntity::ok)

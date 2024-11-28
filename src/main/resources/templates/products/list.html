@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Liste des Produits</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/products">Produits</a></li>
+                <li><a href="/products/new">Nouveau Produit</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Liste des Produits</h1>
+        <a href="/products/new" class="btn btn-primary">Ajouter un Produit</a>
+        
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}">ID</td>
+                    <td th:text="${product.name}">Nom</td>
+                    <td th:text="${product.price} + ' €'">Prix</td>
+                    <td th:text="${product.description}">Description</td>
+                    <td>
+                        <a th:href="@{/products/edit/{id}(id=${product.id})}" class="btn btn-edit">Modifier</a>
+                        <a th:href="@{/products/delete/{id}(id=${product.id})}" class="btn btn-delete">Supprimer</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gestion des Produits</p>
+    </footer>
+</body>
+</html>

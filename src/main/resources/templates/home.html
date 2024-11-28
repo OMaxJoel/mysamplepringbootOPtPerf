@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil - Gestion de Produits</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/products">Produits</a></li>
+                <li><a href="/products/new">Nouveau Produit</a></li>
+                <li><a href="/api/products">API Produits</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Bienvenue sur l'application de Gestion de Produits</h1>
+        <section>
+            <h2>Tableau de Bord</h2>
+            <div class="dashboard-info">
+                <div class="info-card">
+                    <h3>Total Produits</h3>
+                    <p th:text="${totalProducts}">0</p>
+                </div>
+                <div class="info-card">
+                    <h3>Dernière Mise à Jour</h3>
+                    <p th:text="${lastUpdate}">Aucune</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gestion des Produits</p>
+    </footer>
+</body>
+</html>

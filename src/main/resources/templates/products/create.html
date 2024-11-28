@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nouveau Produit</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/products">Produits</a></li>
+                <li><a href="/products/new">Nouveau Produit</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Créer un Nouveau Produit</h1>
+        
+        <form th:action="@{/products/new}" method="post" class="product-form">
+            <div class="form-group">
+                <label for="name">Nom du Produit</label>
+                <input type="text" id="name" name="name" required class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="price">Prix</label>
+                <input type="number" id="price" name="price" step="0.01" required class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" class="form-control"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Créer Produit</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gestion des Produits</p>
+    </footer>
+</body>
+</html>

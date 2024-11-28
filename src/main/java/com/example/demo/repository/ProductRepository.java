@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
@@ -24,8 +25,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     // Requête personnalisée avec jointure (si nécessaire pour d'autres entités liées)
     // Exemple : Récupérer des produits avec leur catégorie
-    @Query("SELECT p FROM Product p JOIN FETCH p.category WHERE p.price < :price")
-    List<Product> findProductsByPriceLessThan(double price);
+    @Query("SELECT p FROM Product p WHERE p.price < :price")
+    List<Product> findByPriceLessThan(@Param("price") double price);
+
 
     // Mise en cache des produits en fonction du nom (par exemple, produits populaires)
     @Cacheable(value = "productsCache", key = "#name")
